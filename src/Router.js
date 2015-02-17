@@ -2,7 +2,7 @@
 (function(window) {
     'use strict';
 
-    var Router = window.Router || {};
+    var $router = window.$router || {};
 
     var routerList = [];
     var defaultRoute;
@@ -31,7 +31,7 @@
 
         routerList.push(router);
 
-        return Router;
+        return $router;
     }
 
     function otherwise(routeId) {
@@ -122,8 +122,8 @@
         throw new Error('Error "Route.' + local + '": ' + message + '!');
     }
 
-    function publishExternalAPI(Router) {
-        extend(Router, {
+    function publishExternalAPI($router) {
+        extend($router, {
             'route': route,
             'otherwise': otherwise,
             'go': go
@@ -136,7 +136,7 @@
         }
     }
 
-    publishExternalAPI(Router);
+    publishExternalAPI($router);
 
-    window.Router = Router;
+    window.$router = $router;
 })(window, undefined);

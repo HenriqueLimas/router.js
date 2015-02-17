@@ -1,6 +1,6 @@
 'use strict';
 
-Router
+$router
     .route('firstRoute', {
         templateUrl: 'templates/first-template.html',
         url: '#first-template'
@@ -11,11 +11,11 @@ Router
     });
 
 function goToFirstRoute() {
-    Router.go('firstRoute');
+    $router.go('firstRoute');
 }
 
 function goToSecondRoute() {
-    Router.go('secondRoute');
+    $router.go('secondRoute');
 }
 
 

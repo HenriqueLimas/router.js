@@ -17,22 +17,22 @@
 //     loadTemplate
 
 
-describe('Router', function() {
+describe('$router', function() {
     it('should exist on the window.', function() {
-        expect(window.Router).toBeDefined();
-        expect(Router).toBeDefined();
+        expect(window.$router).toBeDefined();
+        expect($router).toBeDefined();
     });
 
-    describe('Router.route', function() {
-        it('should exists on Router.', function() {
-            expect(Router.route).toBeDefined();
+    describe('$router.route', function() {
+        it('should exists on $router.', function() {
+            expect($router.route).toBeDefined();
         });
 
         describe('testing the parameters:', function() {
             describe('when the first parameters is not a string,', function() {
                 it('should throw an error.', function() {
                     expect(function() {
-                        Router.route();
+                        $router.route();
                     }).toThrowError('Error "Route.route": It should be passed a String on routeId!');
                 });
             });
@@ -40,7 +40,7 @@ describe('Router', function() {
             describe('when the second parameters is not an object', function() {
                 it('should throw an error.', function() {
                     expect(function() {
-                        Router.route('routeId');
+                        $router.route('routeId');
                     }).toThrowError('Error "Route.route": It should be passed a Object on routeConfig!');
                 });
             });
@@ -49,13 +49,13 @@ describe('Router', function() {
                 describe('templateUrl', function() {
                     it('should throw an error.', function() {
                         expect(function() {
-                            Router.route('routeId', {});
+                            $router.route('routeId', {});
                         }).toThrowError('Error "Route.route": It should exist templateUrl on routeConfig!');
                     });
 
                     it('should throw an error when it is not a String.', function() {
                         expect(function() {
-                            Router.route('routeId', {
+                            $router.route('routeId', {
                                 templateUrl: 42
                             });
                         }).toThrowError('Error "Route.route": It should exist templateUrl on routeConfig!');
@@ -65,7 +65,7 @@ describe('Router', function() {
                 describe('url', function() {
                     it('should throw an error.', function() {
                         expect(function() {
-                            Router.route('routeId', {
+                            $router.route('routeId', {
                                 templateUrl: 'template.html'
                             })
                         }).toThrowError('Error "Route.route": It should exist url on routeConfig!');
@@ -74,37 +74,37 @@ describe('Router', function() {
             });
         });
 
-        it('should return the Router object', function() {
-            expect(Router.route('routeId', {
+        it('should return the $router object', function() {
+            expect($router.route('routeId', {
                 templateUrl: 'template.html',
                 url: '/url'
-            })).toBe(Router);
+            })).toBe($router);
         });
     });
 
-    describe('Router.otherwise', function() {
-        it('should be defined on Router.', function() {
-            expect(Router.otherwise).toBeDefined();
+    describe('$router.otherwise', function() {
+        it('should be defined on $router.', function() {
+            expect($router.otherwise).toBeDefined();
         });
 
         describe('when the routeId doesn\'t exist on the router list', function() {
             it('should throw an error.', function() {
                 expect(function() {
-                    Router.otherwise('routeAnonymous');
+                    $router.otherwise('routeAnonymous');
                 }).toThrowError();
             });
         });
     });
 
-    describe('Router.go', function() {
-        it('should be defined on Router.', function() {
-            expect(Router.go).toBeDefined();
+    describe('$router.go', function() {
+        it('should be defined on $router.', function() {
+            expect($router.go).toBeDefined();
         });
 
         describe('when the routeId does not exist', function() {
             it('should throw an error.', function() {
                 expect(function() {
-                    Router.go('routerAnonymous');
+                    $router.go('routerAnonymous');
                 }).toThrowError();
             });
         });
@@ -121,11 +121,11 @@ describe('Router', function() {
                     }
                 };
 
-                Router.route(router.routeId, router.config);
+                $router.route(router.routeId, router.config);
             });
 
             it('should change the location.pathname', function() {
-            	Router.go(router.routeId);
+            	$router.go(router.routeId);
             });
         });
     });
